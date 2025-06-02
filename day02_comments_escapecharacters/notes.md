@@ -9,8 +9,11 @@ answer : print ("Hello World")
       ex: if 5 > 2:
           print("Five is greater than two!")
 ; this gives a syntax error
-        correct form : if 5 > 2:
-                            print("Five is greater than two!")
+
+        if 5 > 2:
+        print("Five is greater than two!")
+^^ Right form 
+
 
 ## Comments
 
