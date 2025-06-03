@@ -16,3 +16,27 @@
         print(x)
         print(y)
         print(z)
+
+- One value to Multiple Variables 
+ x = y = z = "Orange"
+        print(x)
+        print(y)
+        print(z)
+
+## Unpacking a Collection : 
+
+- Imagine you have a collection of values in a list or tuple and you wont to send the values into a variable.
+
+list1 = ["book","chair","diamond"]
+x, y, z = list1
+print(x)
+print(y)
+print(z)
+
+
+- Use { } to make a list and use [] for lists(when trying to access a character from the list)
+
+
+
+# DAILY REMARKS : 
+- need more list practices, practice more with escape statements, f-strings
