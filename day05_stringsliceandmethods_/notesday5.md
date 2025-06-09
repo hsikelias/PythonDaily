@@ -26,8 +26,8 @@ Some cool in built methods we can use to alter and modify the strings
 
 1.) Upper():
     The upper methods converts a string to upper case. A new string is created, the old one remains as it is cus its immutable..
-    
-'''
+
+
     a = "Lekish"
     print(len(a))
-    print(a.upper()) '''
+    print(a.upper()) 
