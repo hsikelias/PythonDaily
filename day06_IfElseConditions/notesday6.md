@@ -11,7 +11,7 @@ Based on this, the conditional statements are further classified into following 
 
 
 ## If...else statement evaluates like this.
-
+  
 - if the expression evaluated True: 
   Execute the block of code inside if statement. After execution return to the code out of the if...else block
 
