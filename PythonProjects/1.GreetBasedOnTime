@@ -1,4 +1,3 @@
-''' 
 print("This program greets you with a message based on your "
 "time,\nmake sure it's railway time based")
 time = int(input("What is the time?"))
@@ -12,10 +11,9 @@ elif 12 <= time <= 16:
 else:
     print("Good Night!")
 
-'''
 
 ## Above timer only works if you like round off the timming, below has hour and minute format
-'''
+
 print("This timer uses railyway timmings too, but enter your time in HH:MM format ")
 
 time = (input("Enter time in HH:MM format")) 
@@ -32,8 +30,6 @@ elif hour > 24 or minute >= 60:
 else:
     print("Good Night!")
 
-'''    
-
 ### Below timer uses more advanced method, this time with a module.
 
 import time
@@ -47,8 +43,4 @@ elif 12<=h<=16:
     print("Good Evening")    
 else: 
     print("Good night")
-        
-
-
-
 
