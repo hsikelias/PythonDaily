@@ -1,74 +1,92 @@
+import os
+# from colorama import Fore, Style, init
+# init(autoreset=True)
+
 tasks = []
 
-print("---------- To Do List ----------")
+def clear_screen():
+    os.system("cls" if os.name == "nt" else "clear")
 
-while True:
-    print("\nSelect an operation:")
-    print("1. Add Task")
-    print("2. Remove Task")
-    print("3. View Tasks")
-    print("4. Exit")
+def add_task():
+    print("\n--- Add a Task ---")
+    task_name = input("Task Name: ").strip()
+    deadline = input("Deadline (MM/DD/YYYY): ").strip()
+    time = input("Time (e.g. 14:30): ").strip()
 
     try:
-        choice = int(input("Enter your choice (1-4): "))
+        priority = int(input("Priority (1-5): "))
+        if not (1 <= priority <= 5):
+            raise ValueError
     except ValueError:
-        print("Invalid input bruh. Please enter a number between 1 and 4.")
-        continue
+        print("Invalid priority. Please enter a number from 1 to 5.")
+        return
 
-    if choice == 1:
-        print("\n--- Add a Task ---")
-        task_name = input("Task Name: ").strip()
-        deadline = input("Deadline (MM/DD/YYYY): ").strip()
-        time = input("Time (e.g. 14:30): ").strip()
+    task = {
+        "name": task_name,
+        "deadline": deadline,
+        "time": time,
+        "priority": priority
+    }
 
-        try:
-            priority = int(input("Priority (1-5): "))
-            if not (1 <= priority <= 5):
-                raise ValueError
-        except ValueError:
-            print("Invalid priority. Please enter a number from 1 to 5.")
-            continue
+    tasks.insert(0, task)
+    print("Task added successfully!")
 
-        task = {
-            "name": task_name,
-            "deadline": deadline,
-            "time": time,
-            "priority": priority
-        }
+def remove_task():
+    if not tasks:
+        print("No tasks to remove.")
+        return
 
-        tasks.insert(0, task) 
-        print("Task added successfully!")
+    print("\n--- Remove a Task ---")
+    for i, task in enumerate(tasks):
+        print(f"{i + 1}. {task['name']} (Due: {task['deadline']} at {task['time']}, Priority: {task['priority']})")
 
-    elif choice == 2:
-        if not tasks:
-            print("No tasks to remove.")
-            continue
+    try:
+        index = int(input("Enter the task number to remove: ")) - 1
+        if 0 <= index < len(tasks):
+            removed = tasks.pop(index)
+            print(f"Removed task: {removed['name']}")
+        else:
+            print("Invalid task number.")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
 
-        print("\n--- Remove a Task ---")
+def view_tasks():
+    if not tasks:
+        print("\nNo tasks added yet.")
+    else:
+        print("\n--- Your Tasks ---")
         for i, task in enumerate(tasks):
             print(f"{i + 1}. {task['name']} (Due: {task['deadline']} at {task['time']}, Priority: {task['priority']})")
 
+def main():
+    while True:
+        clear_screen()
+        print("=-=-=-=-=-=-=-= TO-DO LIST =-=-=-=-=-=-=-=")
+        print("1. Add Task")
+        print("2. Remove Task")
+        print("3. View Tasks")
+        print("4. Exit")
+
         try:
-            index = int(input("Enter the task number to remove: ")) - 1
-            if 0 <= index < len(tasks):
-                removed = tasks.pop(index)
-                print(f"Removed task: {removed['name']}")
-            else:
-                print("Invalid task number.")
+            choice = int(input("Enter your choice (1-4): "))
         except ValueError:
-            print("Invalid input. Please enter a number.")
+            print("Invalid input bruh. Please enter a number between 1 and 4.")
+            input("Press Enter to continue...")
+            continue
 
-    elif choice == 3:
-        if not tasks:
-            print("\nNo tasks added yet.")
+        if choice == 1:
+            add_task()
+        elif choice == 2:
+            remove_task()
+        elif choice == 3:
+            view_tasks()
+        elif choice == 4:
+            print("Exiting To-Do List. Goodbye!")
+            break
         else:
-            print("\n--- Your Tasks ---")
-            for i, task in enumerate(tasks):
-                print(f"{i + 1}. {task['name']} (Due: {task['deadline']} at {task['time']}, Priority: {task['priority']})")
+            print("Please choose a valid option (1-4).")
 
-    elif choice == 4:
-        print("Exiting To-Do List. Goodbye!")
-        break
+        input("\nPress Enter to continue...")
 
-    else:
-        print("Please choose a valid option (1-4).")
+if __name__ == "__main__":
+    main()
