@@ -85,6 +85,7 @@ while True:
     elif choice == 5:
         print("Goodbye! Keep tracking your habits.")
         break
-
+    
     else:
         print("Choose a number from 1 to 5.")
+
